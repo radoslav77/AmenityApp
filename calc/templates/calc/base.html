@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Document</title>
+    <style>
+        .body-container {
+            margin-top: 10%;
+        }
+    </style>
+    {% block style %}
+    {% endblock %}
+</head>
+
+<body>
+    <nav class="nav ">
+        <div class="container">
+            <h1 class="logo"><a href="">My website</a></h1>
+            <ul>
+                <li><a href="{% url 'daily' %}" class="current">Daily</a></li>
+                <li><a href="">Recipe Input</a></li>
+                <li><a href="">Subrecipe input</a></li>
+                <li><a href="">Menu input</a></li>
+                <li><a href="">Register</a></li>
+                <li><a href="">Login</a></li>
+                <li><a href="">Logout</a></li>
+                ;<i><a href="">Code</a></i>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="body-container">
+        {% block body %}
+        {% endblock %}
+    </div>
+
+</body>
+<script src="static/script.js"></script>
+<script src="static/details.js"></script>
+{% block static %}
+{% endblock %}
+
+</html>

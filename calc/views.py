@@ -10,10 +10,41 @@ from django.views.decorators.csrf import csrf_protect
 from django.urls import reverse
 from django.http import JsonResponse
 import json
+import datetime
+
+from .forms import *
 
 # Create your views here.
 
 
 def index(request):
 
-    return render(request, 'calc/index.html')
+    return render(request, 'calc/index.html', {
+        'form': InputData()
+    })
+
+
+def update(request):
+    if request.method == 'POST':
+        form = InputData(request.POST, request.FILES)
+        if form.is_valid:
+            data = form.save(commit=False)
+            print(data)
+            data.save()
+    return redirect('index')
+
+
+def daily(request):
+
+    time = datetime.datetime.now()
+    today = time.strftime('%d'+'/'+'%m'+'/'+'%Y')
+    data = InputAmenity.objects.all()
+
+    print(time.strftime('%d'+'/'+'%m'+'/'+'%Y'))
+    today_arr = []
+    for d in data:
+        if d.arrival_date == today:
+            today_arr.append(d)
+    return render(request, 'calc/today.html', {
+        'data': today_arr
+    })
