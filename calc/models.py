@@ -57,4 +57,4 @@ class InputAmenity(models.Model):
     date = models.DateField(auto_now_add=True)
 
     def __str__(self) -> str:
-        return f'{self.name, self.date}'
+        return f'{self.name, self.arrival_date}'
