@@ -55,16 +55,20 @@ def daily(request):
 
 def archive(request):
     arch = []
-    print()
+    mon = []
     for i in DATA:
+        month = i.arrival_date
 
+        print(month[5:7])
         #arr = i.arrival_date.strftime('%d'+'/'+'%m'+'/'+'%Y')
         if i.arrival_date < TODAY:
             arch.append(i)
-
-    print(arch)
+    for m in arch:
+        mon.append(m.arrival_date[5:7])
+    print(mon)
     return render(request, 'calc/archive.html', {
-        'data': arch
+        'data': arch,
+        'month': mon
     })
 
 
@@ -81,3 +85,17 @@ def tomorrow(request):
     return render(request, 'calc/archive.html', {
         'data': tom
     })
+
+
+def total(request):
+    lrg_fruit = []
+    mid_fruit = []
+    small_fruit = []
+
+    for i in DATA:
+        if i.fruit_amenity == 'Large fruit':
+            lrg_fruit.append(i)
+        elif i.fruit_amenity == 'Midium fruit':
+            mid_fruit.append(i)
+        else:
+            small_fruit.append(i)
