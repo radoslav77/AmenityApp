@@ -55,7 +55,7 @@ def daily(request):
 
 def archive(request):
     arch = []
-    mon = []
+    mon = set()
     for i in DATA:
         month = i.arrival_date
 
@@ -64,7 +64,7 @@ def archive(request):
         if i.arrival_date < TODAY:
             arch.append(i)
     for m in arch:
-        mon.append(m.arrival_date[5:7])
+        mon.add(m.arrival_date[5:7])
     print(mon)
     return render(request, 'calc/archive.html', {
         'data': arch,
