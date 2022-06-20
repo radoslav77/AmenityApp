@@ -8,7 +8,7 @@
 
 <ul id="mount">
     {% for m in month %}
-    <li><a href="">{{m}}</a></li>
+    <li><a href="{% url 'calc:arch_month' m %}">{{m}}</a></li>
 
     {% endfor %}
 </ul>
@@ -17,7 +17,7 @@
 
 <h3>{{d.name}}</h3>
 <br>
-<h3>{{d.membership}}</h3>
+<h3>{{d.membership}}</h3>s
 <br>
 <p>{{d.vip_level}}</p>
 <br>

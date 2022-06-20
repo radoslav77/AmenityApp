@@ -1,0 +1,22 @@
+{% extends "calc/base.html" %}
+
+{% block body %}
+{{data}}
+
+{% for d in data %}
+
+<h3>{{d.name}}</h3>
+<br>
+<h3>{{d.membership}}</h3>
+<br>
+<p>{{d.vip_level}}</p>
+<br>
+<p>{{d.date}}</p>
+<br>
+{% if d.arrival_date %}
+<h1>{{d.arrival_date}}</h1>
+{% endif %}
+
+
+{% endfor %}
+{% endblock %}

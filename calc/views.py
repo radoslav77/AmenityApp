@@ -57,19 +57,25 @@ def archive(request):
     arch = []
     mon = set()
     for i in DATA:
-        month = i.arrival_date
+        #month = i.arrival_date
 
-        print(month[5:7])
+        # print(month[5:7])
         #arr = i.arrival_date.strftime('%d'+'/'+'%m'+'/'+'%Y')
         if i.arrival_date < TODAY:
             arch.append(i)
     for m in arch:
         mon.add(m.arrival_date[5:7])
-    print(mon)
+    # print(mon)
     return render(request, 'calc/archive.html', {
         'data': arch,
         'month': mon
     })
+
+
+def arch_month(request, month):
+    print(month)
+
+    return render(request, 'calc/arch-month.html')
 
 
 def tomorrow(request):
