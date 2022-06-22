@@ -52,10 +52,29 @@ def daily(request):
         'data': today_arr
     })
 
+# API database
+
+
+def json_data(request):
+
+    JSON_data = []
+
+    for i in DATA:
+        JSON_data.append({
+            'big_id': i.big_id,
+            'name': i.name,
+            'arrival_date': i.arrival_date,
+            # 'month': i.arrival_date[5:7]
+            # 'data': i.date
+        })
+
+    return HttpResponse(json.dumps(JSON_data), content_type="application/json")
+
 
 def archive(request):
     arch = []
     mon = set()
+    date = []
     for i in DATA:
         #month = i.arrival_date
 
@@ -65,10 +84,13 @@ def archive(request):
             arch.append(i)
     for m in arch:
         mon.add(m.arrival_date[5:7])
-    # print(mon)
+        date.append(m.arrival_date)
+    # month = json.dumps(mon), content_type="application/json"
+    print(mon)
     return render(request, 'calc/archive.html', {
         'data': arch,
-        'month': mon
+        'month': mon,
+        'dates': date
     })
 
 
