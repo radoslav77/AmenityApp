@@ -20,6 +20,8 @@ from .forms import *
 time = datetime.datetime.now()
 TODAY = time.strftime('%Y'+'-'+'%m'+'-'+'%d')
 DATA = InputAmenity.objects.all()
+YearMounts = {'01': 'January', '02': 'February', '03': 'March', '04': 'April', '05': 'May', '06': 'June',
+              '07': 'July', '08': 'Auguest', '09': 'September', '10': 'Octouber', '11': 'November', '12': 'December'}
 
 # Create your views here.
 
@@ -64,7 +66,7 @@ def json_data(request):
             'big_id': i.big_id,
             'name': i.name,
             'arrival_date': i.arrival_date,
-            # 'month': i.arrival_date[5:7]
+            'month': i.arrival_date[5:7]
             # 'data': i.date
         })
 
@@ -75,6 +77,7 @@ def archive(request):
     arch = []
     mon = set()
     date = []
+    months = set()
     for i in DATA:
         #month = i.arrival_date
 
@@ -85,18 +88,26 @@ def archive(request):
     for m in arch:
         mon.add(m.arrival_date[5:7])
         date.append(m.arrival_date)
+        for mo in mon:
+            for key in YearMounts:
+                if mo == key:
+                    months.add(YearMounts[key])
+    print(months)
     # month = json.dumps(mon), content_type="application/json"
     print(mon)
+
     return render(request, 'calc/archive.html', {
         'data': arch,
         'month': mon,
-        'dates': date
+        'dates': date,
+        'months': months,
     })
 
 
 def arch_month(request, month):
-    print(month)
 
+    data = InputAmenity.objects.filter(arrival_date=month)
+    print(data)
     return render(request, 'calc/arch-month.html')
 
 
