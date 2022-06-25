@@ -16,7 +16,7 @@ from datetime import timedelta
 from .forms import *
 
 
-#global variebles
+# global variebles
 time = datetime.datetime.now()
 TODAY = time.strftime('%Y'+'-'+'%m'+'-'+'%d')
 DATA = InputAmenity.objects.all()
@@ -40,7 +40,7 @@ def update(request):
             data = form.save(commit=False)
             print(data)
             data.save()
-    return redirect('index')
+    return redirect('calc:index')
 
 
 def daily(request):
@@ -62,11 +62,15 @@ def json_data(request):
     JSON_data = []
 
     for i in DATA:
+        for key in YearMounts:
+            if i.arrival_date[5:7] == key:
+                mon = YearMounts[key]
+                # print(mon)
         JSON_data.append({
             'big_id': i.big_id,
             'name': i.name,
             'arrival_date': i.arrival_date,
-            'month': i.arrival_date[5:7]
+            'month': mon
             # 'data': i.date
         })
 
@@ -75,30 +79,26 @@ def json_data(request):
 
 def archive(request):
     arch = []
-    mon = set()
     date = []
     months = set()
     for i in DATA:
-        #month = i.arrival_date
 
-        # print(month[5:7])
-        #arr = i.arrival_date.strftime('%d'+'/'+'%m'+'/'+'%Y')
+        for key in YearMounts:
+            if i.arrival_date[5:7] == key:
+                months.add(YearMounts[key])
+                month = YearMounts[key]
+
+        date.append({
+            'date': i.arrival_date,
+            'month': month
+        })
+
+        # arr = i.arrival_date.strftime('%d'+'/'+'%m'+'/'+'%Y')
         if i.arrival_date < TODAY:
             arch.append(i)
-    for m in arch:
-        mon.add(m.arrival_date[5:7])
-        date.append(m.arrival_date)
-        for mo in mon:
-            for key in YearMounts:
-                if mo == key:
-                    months.add(YearMounts[key])
-    print(months)
-    # month = json.dumps(mon), content_type="application/json"
-    print(mon)
 
     return render(request, 'calc/archive.html', {
         'data': arch,
-        'month': mon,
         'dates': date,
         'months': months,
     })
@@ -107,20 +107,24 @@ def archive(request):
 def arch_month(request, month):
 
     data = InputAmenity.objects.filter(arrival_date=month)
-    print(data)
-    return render(request, 'calc/arch-month.html')
+    for i in data:
+        print(i)
+
+    return render(request, 'calc/arch-month.html', {
+        'data': data
+    })
 
 
 def tomorrow(request):
     t = datetime.datetime.now() + timedelta(days=1)
-    x = t.strftime('%Y'+'/'+'%m'+'/'+'%d')
+    x = t.strftime('%Y'+'-'+'%m'+'-'+'%d')
     # print(datetime.datetime.now() + timedelta(days=1)) in timedelta increase arrgument to add day to realtime
     tom = []
     for i in DATA:
 
         if i.arrival_date == x:
             tom.append(i)
-
+    print(x)
     return render(request, 'calc/archive.html', {
         'data': tom
     })

@@ -7,12 +7,14 @@
 
 
 <ul id="mount">
-    {% for mo in months %}
+
     {% for m in dates %}
 
 
-    <li><a href="{% url 'calc:arch_month' m %}">{{mo}}</a></li>
-    {% endfor %}
+    <li><a href="{% url 'calc:arch_month' m.date %}">
+            <p id="input">{{m.month}}</p>
+        </a></li>
+
     {% endfor %}
 </ul>
 
@@ -35,70 +37,27 @@
 
 <script>
 
+    const InputEl = document.getElementById('input')
     const MountEL = document.getElementById('mount').children
     var NewArr = Array.from(MountEL)
-    // this can be made with dict.
-    const YearMounts = { 01: 'January', 02: 'February', 03: 'March', 04: 'April', 05: 'May', 06: 'June', 07: 'July', 08: 'Auguest', 09: 'September', 10: 'Octouber', 11: 'November', 12: 'December' }
+    NewArr.forEach(e => {
+        console.log(e.innerText)
+    })
 
-    // need work
+
+
     const JSON_data = ('/json_data')
     GetData(JSON_data)
     async function GetData(url) {
         const res = await fetch(url)
         const data = await res.json()
-        //console.log(data.month)
-        data.forEach(i => {
-
-            NewArr.forEach(e => {
-                //console.log(e.innerText.split('-'))
-                var month = []
-                var nEl = e.innerText.split('-')
-                month.push(nEl)
-                month.splice(1, 1)
-                //month.pop()
-                //month.shift()
-                //console.log(month)
-                month.forEach(dat => {
-
-
-                    dat.forEach((d, idx) => {
-                        //console.log(d, idx)
-                        count = []
-                        if (idx == 1) {
-                            //console.log(d)
-                            count.push(d)
-                            //console.log(count)
-                            NewArr.forEach(e => {
-                                //console.log(e.innerText)
-                                for (var key in YearMounts) {
-                                    var value = YearMounts[key];
-
-                                    if (0 + key === d) {
-                                        // console.log(value)
-                                        e.innerHTML = `<a href="">${value}</a>`
-
-                                    }
-                                    else if (key === e.month) {
-                                        e.innerHTML = `<a href="">${value}</a>`
-                                    }
-
-
-                                    // do something with "key" and "value" variables
-                                }
-
-                            })
-                        }
-                    })
-                })
-            })
-            /* */
-        })
+        //console.log(data)
 
     }
 
 
 
-    ;
+
 
 
 </script>
