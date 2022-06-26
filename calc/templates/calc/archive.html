@@ -18,6 +18,19 @@
     {% endfor %}
 </ul>
 
+<a href="{% url 'calc:months' 'January' %}">January</a>
+<a href="{% url 'calc:months'  'February' %}">February</a>
+<a href="{% url 'calc:months' 'March' %}">March</a>
+<a href="{% url 'calc:months' 'April' %}">April</a>
+<a href="{% url 'calc:months' 'May' %}">May</a>
+<a href="{% url 'calc:months' 'June' %}">June</a>
+<a href="{% url 'calc:months' 'July' %}">July</a>
+<a href="{% url 'calc:months' 'August' %}">August</a>
+<a href="{% url 'calc:months' 'September' %}">September</a>
+<a href="{% url 'calc:months'  'October' %}">October</a>
+<a href="{% url 'calc:months'  'November' %}">November</a>
+<a href="{% url 'calc:months' 'December' %}">December</a>
+
 {% for d in data %}
 
 <h3>{{d.name}}</h3>

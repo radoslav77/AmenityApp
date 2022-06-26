@@ -82,15 +82,15 @@ def archive(request):
     date = []
     months = set()
     for i in DATA:
-
+        '''
         for key in YearMounts:
             if i.arrival_date[5:7] == key:
                 months.add(YearMounts[key])
                 month = YearMounts[key]
-
+        '''
         date.append({
             'date': i.arrival_date,
-            'month': month
+            'month': i.month
         })
 
         # arr = i.arrival_date.strftime('%d'+'/'+'%m'+'/'+'%Y')
@@ -101,6 +101,16 @@ def archive(request):
         'data': arch,
         'dates': date,
         'months': months,
+    })
+
+
+def months(request, months):
+    cur_month = []
+    for i in DATA:
+        if i.month == months:
+            cur_month.append(i)
+    return render(request, 'calc/arch-month.html', {
+        'data': cur_month
     })
 
 
@@ -130,15 +140,22 @@ def tomorrow(request):
     })
 
 
-def total(request):
+def total(request, months):
     lrg_fruit = []
     mid_fruit = []
     small_fruit = []
 
     for i in DATA:
-        if i.fruit_amenity == 'Large fruit':
-            lrg_fruit.append(i)
-        elif i.fruit_amenity == 'Midium fruit':
-            mid_fruit.append(i)
-        else:
-            small_fruit.append(i)
+        if i.month == months:
+            if i.fruit_amenity == 'Large fruit':
+                lrg_fruit.append(i.fruit_amenity)
+            elif i.fruit_amenity == 'Midium fruit':
+                mid_fruit.append(i.fruit_amenity)
+            else:
+                small_fruit.append(i.fruit_amenity)
+
+    return render(request, 'calc/total.html', {
+        'fruits': lrg_fruit,
+        'sm_fruits': small_fruit,
+        'mid_fruits': mid_fruit
+    })

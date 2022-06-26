@@ -2,10 +2,13 @@
 
 {% block body %}
 
+{{fruits}}
+{{sm_fruits}}
+{{mid_fruits}}
 
 
 {% for d in data %}
-<a href="{% url 'calc:total' d.month %}">For total</a>
+
 <h3>{{d.name}}</h3>
 <br>
 <h3>{{d.membership}}</h3>

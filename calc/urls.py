@@ -12,6 +12,8 @@ urlpatterns = [
     path('archive', views.archive, name='archive'),
     path('tommorow', views.tomorrow, name='tomorrow'),
     path('arch-month/<str:month>', views.arch_month, name='arch_month'),
+    path('months/<str:months>', views.months, name='months'),
+    path('total/<str:months>', views.total, name='total'),
 
     # API
     path('json_data', views.json_data, name='json_data')
