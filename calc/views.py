@@ -153,9 +153,9 @@ def total(request, months):
                 mid_fruit.append(i.fruit_amenity)
             else:
                 small_fruit.append(i.fruit_amenity)
-
+    print(lrg_fruit, '-', mid_fruit, '-', small_fruit)
     return render(request, 'calc/total.html', {
-        'fruits': lrg_fruit,
-        'sm_fruits': small_fruit,
-        'mid_fruits': mid_fruit
+        'fruits': len(lrg_fruit),
+        'sm_fruits': len(small_fruit),
+        'mid_fruits': len(mid_fruit)
     })

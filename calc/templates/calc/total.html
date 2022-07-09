@@ -2,9 +2,15 @@
 
 {% block body %}
 
-{{fruits}}
-{{sm_fruits}}
-{{mid_fruits}}
+{% if fruits %}
+<h3>Large fruit bowls: {{fruits}}</h3>
+{% endif %}
+{% if sm_fruits %}
+<h3>Small fruit bowls: {{sm_fruits}}</h3>
+{% endif %}
+{% if mid_fruits %}
+<h3>Midium fruit bowls: {{mid_fruits}}</h3>
+{% endif %}
 
 
 {% for d in data %}
