@@ -23,6 +23,12 @@ DRINK = {
     ('Water', 'Water')
 }
 
+TURN_DOWN = {
+    ('Florentine', 'Florebntine'),
+    ('Macaroons', 'Macaroons'),
+    ('Pistachio Finnacier', 'Pistachio Finnacier')
+
+}
 
 DESSERT = {
     ('Chocolate truffle', 'Chocolate truffle'),
@@ -77,3 +83,12 @@ class InputAmenity(models.Model):
 
     def __str__(self) -> str:
         return f'{self.name, self.arrival_date, self.month}'
+
+
+class LongStay(models.Model):
+    title = models.ForeignKey(InputAmenity, on_delete=models.CASCADE)
+    drink_amenity = models.CharField(
+        max_length=200, choices=DRINK, blank=True, null=True)
+    amenity = models.CharField(max_length=200, choices=TURN_DOWN)
+    month = models.CharField(max_length=300, choices=MONTHS)
+    date = models.DateField(auto_now_add=True)
