@@ -22,6 +22,8 @@ TODAY = time.strftime('%Y'+'-'+'%m'+'-'+'%d')
 DATA = InputAmenity.objects.all()
 YearMounts = {'01': 'January', '02': 'February', '03': 'March', '04': 'April', '05': 'May', '06': 'June',
               '07': 'July', '08': 'Auguest', '09': 'September', '10': 'Octouber', '11': 'November', '12': 'December'}
+DATA_LONG_STAY = LongStay.objects.all()
+
 
 # Create your views here.
 
@@ -144,6 +146,7 @@ def total(request, months):
     lrg_fruit = []
     mid_fruit = []
     small_fruit = []
+    long_stay = []
 
     for i in DATA:
         if i.month == months:
@@ -153,7 +156,11 @@ def total(request, months):
                 mid_fruit.append(i.fruit_amenity)
             else:
                 small_fruit.append(i.fruit_amenity)
-    print(lrg_fruit, '-', mid_fruit, '-', small_fruit)
+    for j in DATA_LONG_STAY:
+        if j.month == months:
+            long_stay.append(j)
+    print(DATA_LONG_STAY)
+    #print(lrg_fruit, '-', mid_fruit, '-', small_fruit)
     return render(request, 'calc/total.html', {
         'fruits': len(lrg_fruit),
         'sm_fruits': len(small_fruit),

@@ -92,3 +92,6 @@ class LongStay(models.Model):
     amenity = models.CharField(max_length=200, choices=TURN_DOWN)
     month = models.CharField(max_length=300, choices=MONTHS)
     date = models.DateField(auto_now_add=True)
+
+    def __str__(self) -> str:
+        return f'{self.title, self.date}'
