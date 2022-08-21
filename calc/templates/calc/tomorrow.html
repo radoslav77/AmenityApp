@@ -1,0 +1,51 @@
+{% extends "calc/base.html" %}
+
+{% block body %}
+
+
+
+{% for d in data %}
+
+<h3>{{d.name}}</h3>
+<br>
+<h3>{{d.membership}}</h3>s
+<br>
+<p>{{d.vip_level}}</p>
+<br>
+<p>{{d.date}}</p>
+<br>
+{% if d.arrival_date %}
+<h1>{{d.arrival_date}}</h1>
+{% endif %}
+
+
+{% endfor %}
+
+<script>
+
+    const InputEl = document.getElementById('input')
+    const MountEL = document.getElementById('mount').children
+    var NewArr = Array.from(MountEL)
+    NewArr.forEach(e => {
+        console.log(e.innerText)
+    })
+
+
+
+    const JSON_data = ('/json_data')
+    GetData(JSON_data)
+    async function GetData(url) {
+        const res = await fetch(url)
+        const data = await res.json()
+        //console.log(data)
+
+    }
+
+
+
+
+
+
+</script>
+
+{% endblock %}

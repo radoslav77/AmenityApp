@@ -1,9 +1,57 @@
 {% extends "calc/base.html" %}
 {% block style %}
 <style>
+    body{
+        background-color: rgb(207, 203, 190);
+       
+    }
+    .body-container {
+    margin-top: 0;
+    }
     p{
         margin-bottom: 20px;
     }
+    .form-container{
+        width: 80%;
+        margin-left: 10%;
+        
+    }
+    .form{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        position: relative;
+        background-color: rgb(207, 199, 175);
+        padding: 15px;
+        box-shadow: 2px 3px 15px rgba(0.1, 0.3, 02, 1);
+    }
+    #btn{
+        width: 60%;
+        height: 2rem;
+        background-color: rgb(156, 156, 252);
+        color: #fff;
+        border-radius: 2px;
+        border: none;
+    }
+    #btn:hover{
+        background-color: rgb(88, 88, 241);
+    }
+    #btn:active{
+        transform: scale(-92%);
+    }
+    input:focus{
+        outline: none;
+        
+    }
+
+    label{
+        position: absolute;
+        left: 10px;
+       
+    }
+    input:focus ~ label {
+    color:red;
+}
 
 </style>
 
@@ -11,11 +59,16 @@
 
 {% block body %}
 {{name}}
+<div class="form-container">
+    <div class="form">
+        <form action="{% url 'calc:update' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Submit" id="btn">
+        </form>
+    </div>
 
-<form action="{% url 'calc:update' %}" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Submit">
-</form>
+</div>
+
 
 {% endblock %}

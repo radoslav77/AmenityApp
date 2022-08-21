@@ -94,11 +94,11 @@ def archive(request):
             'date': i.arrival_date,
             'month': i.month
         })
-
+        months.add(i)
         # arr = i.arrival_date.strftime('%d'+'/'+'%m'+'/'+'%Y')
         if i.arrival_date < TODAY:
             arch.append(i)
-
+    print(months)
     return render(request, 'calc/archive.html', {
         'data': arch,
         'dates': date,
@@ -136,8 +136,8 @@ def tomorrow(request):
 
         if i.arrival_date == x:
             tom.append(i)
-    print(x)
-    return render(request, 'calc/archive.html', {
+    print(tom)
+    return render(request, 'calc/tomorrow.html', {
         'data': tom
     })
 

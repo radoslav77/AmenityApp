@@ -7,29 +7,27 @@
 
 
 <ul id="mount">
+<li><a href="{% url 'calc:months' 'January' %}">January</a></li>
+<li><a href="{% url 'calc:months'  'February' %}">February</a></li>
+<li><a href="{% url 'calc:months' 'March' %}">March</a></li>
+<li><a href="{% url 'calc:months' 'April' %}">April</a></li>
+<li><a href="{% url 'calc:months' 'May' %}">May</a></li>
+<li><a href="{% url 'calc:months' 'June' %}">June</a></li>
+<li><a href="{% url 'calc:months' 'July' %}">July</a></li>
+<li><a href="{% url 'calc:months' 'August' %}">August</a></li>
+<li><a href="{% url 'calc:months' 'September' %}">September</a></li>
+<li><a href="{% url 'calc:months'  'October' %}">October</a></li>
+<li><a href="{% url 'calc:months'  'November' %}">November</a></li>
+<li><a href="{% url 'calc:months' 'December' %}">December</a></li>
 
-    {% for m in dates %}
 
 
-    <li><a href="{% url 'calc:arch_month' m.date %}">
-            <p id="input">{{m.month}}</p>
-        </a></li>
-
-    {% endfor %}
 </ul>
 
-<a href="{% url 'calc:months' 'January' %}">January</a>
-<a href="{% url 'calc:months'  'February' %}">February</a>
-<a href="{% url 'calc:months' 'March' %}">March</a>
-<a href="{% url 'calc:months' 'April' %}">April</a>
-<a href="{% url 'calc:months' 'May' %}">May</a>
-<a href="{% url 'calc:months' 'June' %}">June</a>
-<a href="{% url 'calc:months' 'July' %}">July</a>
-<a href="{% url 'calc:months' 'August' %}">August</a>
-<a href="{% url 'calc:months' 'September' %}">September</a>
-<a href="{% url 'calc:months'  'October' %}">October</a>
-<a href="{% url 'calc:months'  'November' %}">November</a>
-<a href="{% url 'calc:months' 'December' %}">December</a>
+
+
+
+
 
 {% for d in data %}
 
