@@ -164,5 +164,6 @@ def total(request, months):
     return render(request, 'calc/total.html', {
         'fruits': len(lrg_fruit),
         'sm_fruits': len(small_fruit),
-        'mid_fruits': len(mid_fruit)
+        'mid_fruits': len(mid_fruit),
+        'longstay': len(long_stay),
     })

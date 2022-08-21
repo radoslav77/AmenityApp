@@ -26,7 +26,10 @@ DRINK = {
 TURN_DOWN = {
     ('Florentine', 'Florebntine'),
     ('Macaroons', 'Macaroons'),
-    ('Pistachio Finnacier', 'Pistachio Finnacier')
+    ('Pistachio Finnacier', 'Pistachio Finnacier'),
+    ('Madleines', 'Madleines'),
+    ('Flapjack','Flapjack'),
+    ('Lemon cake', 'Lemon cake')
 
 }
 
