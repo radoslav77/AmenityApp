@@ -53,14 +53,15 @@ def daily(request):
         if d.arrival_date == TODAY:
             today_arr.append(d)
     return render(request, 'calc/today.html', {
-        'data': today_arr
+        'data': today_arr,
+        'today':TODAY
     })
 
 # API database
 
 
 def json_data(request):
-
+# need to update jaso API with all data from the database
     JSON_data = []
 
     for i in DATA:
