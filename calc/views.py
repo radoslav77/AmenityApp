@@ -73,8 +73,13 @@ def json_data(request):
             'big_id': i.big_id,
             'name': i.name,
             'arrival_date': i.arrival_date,
-            'month': mon
-            # 'data': i.date
+            'month': mon,
+            'membership': i.membership,
+            'fruit_amenity': i.fruit_amenity,
+            'drink_amenity': i.drink_amenity,
+            'dessert_amenity': i.dessert_amenity,
+            'birthday_amenity': i.birthday_amenity,
+            #'data': i.date
         })
 
     return HttpResponse(json.dumps(JSON_data), content_type="application/json")

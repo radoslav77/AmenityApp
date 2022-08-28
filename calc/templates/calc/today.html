@@ -41,42 +41,6 @@
 
 
 
-<!--<div class="item-container">
-    <div class="item">
-    {% for d in data %}
-    <label for="Name">Name:</label>
-        <div class="ROW" id="name">
-            
-            <p>{{d.name}}</p>
-        </div>
-    
-    <br>
-    <label for="Membership">Membership:</label>
-        <div class="ROW">
-            <p>{{d.membership}}</p>
-        </div>
-    <br>
-    <label for="Vip_level">VIP Level:</label>
-        <div class="ROW">
-            <p>{{d.vip_level}}</p>
-        </div>
-    <br>
-    <label for="Arrival">Date of Arrival:</label>
-        <div class="ROW">
-            <p>{{d.date}}</p>
-        </div>
-    <br>
-    <label for="ArrDate">Date:</label>
-        <div class="ROW">
-            {% if d.arrival_date %}
-            <p>{{d.arrival_date}}</p>
-            {% endif %}
-        </div>
-
-
-    {% endfor %}
-    </div>-->
-   
     
     <h1>Todays arrivals: {{today}}</h1>
     
@@ -120,5 +84,22 @@
     console.log(item.innerHTML)
     }
     
+    const JSON_data = ('/json_data')
+    GetData(JSON_data)
+    async function GetData(url) {
+        const res = await fetch(url)
+        const data = await res.json()
+        console.log(data)
+
+        data.forEach(e => {
+            console.log(e.arrival_date)
+            if (e.arrival_date == '2022-08-21'){
+                console.log(e.name, '+', e.fruit_amenity )
+            }
+        });
+
+    }
+
+
 </script>
 {% endblock %}
