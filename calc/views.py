@@ -24,6 +24,11 @@ YearMounts = {'01': 'January', '02': 'February', '03': 'March', '04': 'April', '
               '07': 'July', '08': 'Auguest', '09': 'September', '10': 'Octouber', '11': 'November', '12': 'December'}
 DATA_LONG_STAY = LongStay.objects.all()
 
+FRUIT = ['Large fruit', 'Midium fruit','Small fruit','Presidential']
+DRINK = ['White wine','Red wine','Champagne', 'Negroni', 'Water']
+TURN_DOWN = ['Florentine', 'Macaroons', 'Pistachio Finnacier','Madleines', 'Flapjack','Lemon cake']
+DESSERT = ['Chocolate truffle', 'Macaroons 4pcs', 'Macaroons 8pcs', 'Baklava', 'Maamul', 'Arab amenity']
+
 
 # Create your views here.
 
@@ -79,7 +84,7 @@ def json_data(request):
             'drink_amenity': i.drink_amenity,
             'dessert_amenity': i.dessert_amenity,
             'birthday_amenity': i.birthday_amenity,
-            #'data': i.date
+            'data': str(i.date)
         })
 
     return HttpResponse(json.dumps(JSON_data), content_type="application/json")
@@ -154,6 +159,10 @@ def total(request, months):
     small_fruit = []
     long_stay = []
 
+    fruit = []
+    drink = []
+    pastry = []
+
     for i in DATA:
         if i.month == months:
             if i.fruit_amenity == 'Large fruit':
@@ -162,10 +171,20 @@ def total(request, months):
                 mid_fruit.append(i.fruit_amenity)
             else:
                 small_fruit.append(i.fruit_amenity)
+            for e in FRUIT:
+                if i.fruit_amenity == e:
+                    fruit.append(e)
+            for d in DRINK:
+                if i.drink_amenity == d:
+                    drink.append(d)
+            for s in DESSERT:
+                if i.dessert_amenity == s:
+                    pastry.append(s)
+                    print(s)
     for j in DATA_LONG_STAY:
         if j.month == months:
             long_stay.append(j)
-    print(DATA_LONG_STAY)
+    #print(DATA_LONG_STAY)
     #print(lrg_fruit, '-', mid_fruit, '-', small_fruit)
     return render(request, 'calc/total.html', {
         'fruits': len(lrg_fruit),
