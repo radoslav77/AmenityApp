@@ -44,6 +44,11 @@
         
     }
 
+    label[for="id_num_fruit"]{
+        display: none;
+        font-size: xx-small;
+    }
+
     label{
         position: absolute;
         left: 10px;
@@ -51,7 +56,12 @@
     }
     input:focus ~ label {
     color:red;
-}
+    }
+
+    label[for="id_num_fruit"]{
+        display: none;
+        font-size: xx-small;
+    }
 
 </style>
 
@@ -69,24 +79,33 @@
     </div>
 
 </div>
-<button id="btn">BUTTON</button>
+<button id="btn1">BUTTON</button>
 <output id="output"></output>
 
 
 <script>
-    const BtnEl = document.getElementById('btn')
+    const BtnEl = document.getElementById('btn1')
     const formData = document.getElementById('form')
     const NewForm = new FormData(formData)
-console.log(BtnEl)
+    const labelEls = document.getElementsByTagName("label")
+    
+
+console.log(labelEls)
     const output = document.getElementById('output');
 
-    BtnEl.addEventListener("mouseover", ()=>  {
+    BtnEl.addEventListener("click", ()=>  {
         console.log(123)
         for (const [key, value] of NewForm) {
         output.textContent += `${key}: ${value}\n`;
         }
     })
 
+   for (let i = 0; i < labelEls.length; i++){
+     console.log(labelEls[i].innerHTML)
+     if(labelEls[i].innerHTML == "Num of fruit:" || labelEls[i].innerHTML == "Num of drink:" || labelEls[i].innerHTML == "Num of dessert:" ){
+        labelEls[i].style.display = "none"
+     }
+   }
 
 
     

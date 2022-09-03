@@ -73,10 +73,13 @@ class InputAmenity(models.Model):
     vip_level = models.IntegerField(default=0)
     guests_count = models.IntegerField(default=1)
     room_allocation = models.IntegerField(default=100)
+    num_of_fruit = models.IntegerField(default=1, blank=True, null=True)
     fruit_amenity = models.CharField(
         max_length=200, choices=FRUIT, blank=True, null=True)
+    num_of_drink = models.IntegerField(default=0, blank=True, null=True)
     drink_amenity = models.CharField(
         max_length=200, choices=DRINK, blank=True, null=True)
+    num_of_dessert = models.IntegerField(default=1, blank=True, null=True)
     dessert_amenity = models.CharField(
         max_length=200, choices=DESSERT, blank=True, null=True)
     birthday_amenity = models.CharField(
