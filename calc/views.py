@@ -80,8 +80,11 @@ def json_data(request):
             'arrival_date': i.arrival_date,
             'month': mon,
             'membership': i.membership,
+            'num_fruit': i.num_of_fruit,
             'fruit_amenity': i.fruit_amenity,
+            'num_drink': i.num_of_drink,
             'drink_amenity': i.drink_amenity,
+            'num_dessrt': i.num_of_dessert,
             'dessert_amenity': i.dessert_amenity,
             'birthday_amenity': i.birthday_amenity,
             'data': str(i.date)

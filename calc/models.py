@@ -64,6 +64,7 @@ MONTHS = {
 }
 
 
+
 class InputAmenity(models.Model):
     big_id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=300)
