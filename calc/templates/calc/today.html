@@ -61,7 +61,7 @@
     <td >{{d.membership}}</td>
     <td>{{d.vip_level}}</td>
     <td>{{d.date}}</td>
-    <td class="amenities">{{d.fruit_amenity}}</td>
+    <td class="amenities">{{d.fruit_amenity}}, {{ d.drink_amenity}}, {{d.dessert_amenity}}</td>
     <td>{{d.arrival_date}}</td>
   </tr>
   {% endfor %}
@@ -73,6 +73,11 @@
 
 
 </div>
+<div class="total">
+    <ul id="total">
+        <li></li>
+    </ul>
+</div>
 <script>
     const amenitiesEl = document.getElementsByClassName('amenities')
     
@@ -81,7 +86,7 @@
     
     
     for (let item of amenitiesEl) {
-    console.log(item.innerHTML)
+    //console.log(item.innerHTML)
     }
     
     const JSON_data = ('/json_data')
@@ -89,12 +94,28 @@
     async function GetData(url) {
         const res = await fetch(url)
         const data = await res.json()
-        console.log(data)
+        //console.log(data)
 
         data.forEach(e => {
-            console.log(e.arrival_date)
-            if (e.arrival_date == '2022-08-21'){
-                console.log(e.name, '+', e.fruit_amenity )
+            //console.log(e.arrival_date)
+            let numCount = {}
+
+            if (e.arrival_date === e.date){
+                console.log(e.name, '+', e.fruit_amenity, '+', e.arrival_date )
+                console.log(e)
+
+                //numCount.add(e.name, e.num_fruit)
+
+
+                const ulEl = document.getElementById('total')
+                var liEl = document.createElement('li')
+                liEl.innerHTML = `<div> ${e.fruit_amenity} total : ${e.num_fruit} <br><br>
+                                       ${e.dessert_amenity} total : ${e.num_dessert}<br><br>
+                                       ${e.drink_amenity}             
+                                    </div>`
+               
+                ulEl.appendChild(liEl)
+                
             }
         });
 

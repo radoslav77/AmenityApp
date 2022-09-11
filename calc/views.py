@@ -87,7 +87,7 @@ def json_data(request):
             'num_dessrt': i.num_of_dessert,
             'dessert_amenity': i.dessert_amenity,
             'birthday_amenity': i.birthday_amenity,
-            'data': str(i.date)
+            'date': str(i.date)
         })
 
     return HttpResponse(json.dumps(JSON_data), content_type="application/json")
@@ -152,7 +152,8 @@ def tomorrow(request):
             tom.append(i)
     print(tom)
     return render(request, 'calc/tomorrow.html', {
-        'data': tom
+        'data': tom,
+        'tomorrow': x
     })
 
 

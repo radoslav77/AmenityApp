@@ -1,5 +1,27 @@
 {% extends "calc/base.html" %}
-
+{%  block style %}
+<style>
+    #mount{
+        font-size: xx-large;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        list-style-type: none;
+        margin: 5%;
+        
+    }
+    li{
+        text-decoration: none;
+        color: blue;
+        margin: 1.5%;
+    }
+     a{
+        text-decoration: none;
+        padding: 7px 15px;
+        transition: all 0.3s ease-in-out;
+    }
+</style>
+{% endblock %}
 {% block body %}
 
 

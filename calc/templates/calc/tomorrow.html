@@ -1,25 +1,82 @@
 {% extends "calc/base.html" %}
 
+
+
+
+{% block style %}
+<style>
+    .item-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid #000;
+        width: 90%;
+        margin-left: 10%;
+        padding: 10px;
+    }
+    .item{
+        display: flex;
+        flex-direction: row;
+       
+        margin: 5px;
+    }
+    label{
+        margin: 0;
+        text-decoration: underline;
+    }
+    .ROW{
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    table, th, td {
+    border: 1px solid black;
+    }
+    td{
+        text-align: center;
+    }
+    p{
+        margin: 5px;
+    }
+</style>
+{% endblock %}
+
 {% block body %}
 
 
 
-{% for d in data %}
+    
+    <h1>Todays arrivals: {{tomorrow}}</h1>
+    
+    <div class="item-container">
+       
+<table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Membership</th>
+    <th>VIP Level</th>
+    <th>Date of Arrival</th>
+    <th>Amenities</th>
+    <th>Date</th>
+  </tr>
+  {% for d in data %}
+  <tr>
+    <td><p>{{d.name}}</p></td>
+    <td >{{d.membership}}</td>
+    <td>{{d.vip_level}}</td>
+    <td>{{d.date}}</td>
+    <td class="amenities">{{d.fruit_amenity}}</td>
+    <td>{{d.arrival_date}}</td>
+  </tr>
+  {% endfor %}
+  <tr>
+    <td>February</td>
+    <td style="text-align:right">$80</td>
+  </tr>
+</table>
 
-<h3>{{d.name}}</h3>
-<br>
-<h3>{{d.membership}}</h3>s
-<br>
-<p>{{d.vip_level}}</p>
-<br>
-<p>{{d.date}}</p>
-<br>
-{% if d.arrival_date %}
-<h1>{{d.arrival_date}}</h1>
-{% endif %}
 
+</div>
 
-{% endfor %}
 
 <script>
 
