@@ -84,41 +84,114 @@
    // need to import jason and compare arrival name with amenities 
    // and input it back to page as combined + total  
     
-    
+    let arr = []
     for (let item of amenitiesEl) {
-    //console.log(item.innerHTML)
+    //console.log(item.innerText)
+    let nArr = item.innerText.split(',')
+        arr.push(nArr)
     }
+    
+    arr.forEach(el => {
+
+        console.log(el)
+    })
     
     const JSON_data = ('/json_data')
     GetData(JSON_data)
     async function GetData(url) {
         const res = await fetch(url)
         const data = await res.json()
+ 
+ 
         //console.log(data)
 
+        // NEED to look in this as returns double values 
+let coun = 0
+let counM = 0
+let counL = 0
+let desC = 0  
+let desB = 0
+let desM = 0
         data.forEach(e => {
-            //console.log(e.arrival_date)
-            let numCount = {}
+            
+            //var date = new Date().toLocaleDateString()
+            //var currentDate = date.getFullYear() + '-' + date.getrMonth() + '-' + date.getDate()
+            
+            //console.log(e.date,' ',e.arrival_date)
 
             if (e.arrival_date === e.date){
-                console.log(e.name, '+', e.fruit_amenity, '+', e.arrival_date )
-                console.log(e)
-
-                //numCount.add(e.name, e.num_fruit)
-
-
-                const ulEl = document.getElementById('total')
-                var liEl = document.createElement('li')
-                liEl.innerHTML = `<div> ${e.fruit_amenity} total : ${e.num_fruit} <br><br>
-                                       ${e.dessert_amenity} total : ${e.num_dessert}<br><br>
-                                       ${e.drink_amenity}             
-                                    </div>`
-               
-                ulEl.appendChild(liEl)
+                //console.log(e.name, '+', e.fruit_amenity, '+', e.arrival_date )
+                //console.log(e)
+                let numCount = {key: {type:'none',
+                                        num: 0},
+                                des: {Dtype: 'none',
+                                        Dnum: 0}
+                                    }
+                numCount.key.type = e.fruit_amenity
+                numCount.key.num= e.num_fruit
+                numCount.des.Dtype = e.dessert_amenity
+                numCount.des.Dnum = e.num_dessrt
+                //numCount.num = e.num_fruit
                 
-            }
-        });
+                for(var key in numCount){
+                    //console.log(key+ ':' + numCount[key])
+                    if ( e.fruit_amenity == 'Small fruit'){
+                        //var Ccoun = 0
+                        coun =  coun + numCount.key.num
+                    } else if (e.fruit_amenity == 'Midium fruit'){
+                        counM = counM + numCount.key.num
 
+                    }else if (e.fruit_amenity == 'Large fruit'){
+                        counL = counL + numCount.key.num
+
+                    }
+
+                }
+               
+                for (var key in numCount){
+                     if (e.dessert_amenity == 'Chocolate truffle'){
+                        desC = desC + numCount.des.Dnum
+                        
+                    }else if(e.dessert_amenity == 'Baklava'){
+                        
+                        desB = desB + numCount.des.Dnum
+                        
+                    }else if(e.dessert_amenity == 'Macaroons 4pcs'){
+                       
+                        desM = desM + numCount.des.Dnum
+                    }
+                     //console.log(e.dessert_amenity, '-', numCount.des)
+                }
+                 
+
+
+
+
+                console.log(numCount)
+            }
+            
+        });
+                        const ulEl = document.getElementById('total')
+                var liEl = document.createElement('li')
+                liEl.innerHTML = `<div> Small Fruit total : ${coun / 2} <br><br>
+                                        Midium Fruit total : ${counM / 2}<br><br>
+                                        Large Fruit total : ${counL / 2}<br><br>
+                                        Chocolaet traffles : ${desC / 2}<br><br>
+                                        Baklava total : ${desB / 2}<br><br>
+                                        Macaroons 4pcs total: ${desM / 2}<br><br>
+                                    </div>`
+                
+                                  
+                ulEl.appendChild(liEl)
+        //console.log(coun, '-', counM,' ', counL)
+
+    }
+    const LiElments = document.getElementById('total')
+    for(let i = 0; i < LiElments.length; i++){
+        //console.log(LiElments[i])
+        if( LiElments[i].innerHTML == 'undefined'){
+            LiElments[i].style.display = 'none'
+        }
     }
 
 

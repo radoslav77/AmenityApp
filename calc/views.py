@@ -73,7 +73,9 @@ def json_data(request):
         for key in YearMounts:
             if i.arrival_date[5:7] == key:
                 mon = YearMounts[key]
-                # print(mon)
+        #arrival = datetime.datetime.strftime(i.arrival_date, '%d'+'/'+'%m'+'/'+'%Y')
+        #print(arrival)
+        
         JSON_data.append({
             'big_id': i.big_id,
             'name': i.name,
@@ -87,9 +89,9 @@ def json_data(request):
             'num_dessrt': i.num_of_dessert,
             'dessert_amenity': i.dessert_amenity,
             'birthday_amenity': i.birthday_amenity,
-            'date': str(i.date)
+            'date': time.strftime('%Y'+'-'+'%m'+'-'+'%d')
         })
-
+   
     return HttpResponse(json.dumps(JSON_data), content_type="application/json")
 
 
