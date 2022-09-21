@@ -93,6 +93,8 @@ let desArab = 0
 let drkWater = 0 
 let drkN = 0 
 let drkWW = 0
+let drkCh = 0
+let drkRW = 0
     const amenitiesEl = document.getElementsByClassName('amenities')
     
    // need to import jason and compare arrival name with amenities 
@@ -207,6 +209,10 @@ let size = size_dict(numCount)
                         drkN = drkN + numCount.drk.drknum
                     }else if (e.drink_amenity == 'White wine'){
                         drkWW = drkWW + numCount.drk.drknum
+                    }else if (e.drink_amenity == 'Champagne'){
+                        drkCh = drkCh + numCount.drk.drknum
+                    }else if (e.drink_amenity == 'Red wine'){
+                        drkRW = drkRW + numCount.drk.drknum
                     }
                 }
 
@@ -231,6 +237,8 @@ let size = size_dict(numCount)
                                         Water total: ${drkWater / size  }<br><br>
                                         Negroni total: ${drkN / size  }<br><br>
                                         White Wine total: ${drkWW / size  }<br><br>
+                                        Champadne total: ${drkWW / size  }<br><br>
+                                        Red Wine total: ${drkWW / size  }<br><br>
                                     </div>`
                 
                                   
