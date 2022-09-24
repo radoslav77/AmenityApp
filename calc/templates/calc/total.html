@@ -30,5 +30,31 @@
 <h4>Total long stay amenities: <h1>{{longstay}}</h1> </h4>
 {% endif %}
 
+<table style="width:100%">
+    <tr>
+      <th>Name</th>
+      <th>Membership</th>
+      <th>VIP Level</th>
+      <th>Date of Arrival</th>
+      <th>Amenities</th>
+      <th>Date</th>
+    </tr>
+    {% for d in data %}
+    <tr>
+      <td><p>{{d.name}}</p></td>
+      <td >{{d.membership}}</td>
+      <td>{{d.vip_level}}</td>
+      <td>{{d.date}}</td>
+      <td class="amenities">{{d.fruit_amenity}}, {{ d.drink_amenity}}, {{d.dessert_amenity}}</td>
+      <td>{{d.arrival_date}}</td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <td>February</td>
+      <td style="text-align:right">$80</td>
+    </tr>
+  </table>
+  
+
 {% endfor %}
 {% endblock %}
