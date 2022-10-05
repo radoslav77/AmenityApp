@@ -2,6 +2,11 @@
 
 {% block body %}
 
+
+<div class="month" >
+  <h2>For Month of <p id="month">{{month}}</p></h2>
+</div>
+
 {% if fruits %}
 <h3>Large fruit bowls: {{fruits}}</h3>
 {% endif %}
@@ -60,7 +65,30 @@
 
 <script>
     const queryString = window.location.search
-    console.log(queryString)
+    const que = new URLSearchParams(queryString)
+    const q = parseInt(que.get('q'))
+   const MonthEl = document.getElementById('month')
+   //console.log(MonthEl.innerText)
+
+   const JSON_data = ('/json_data')
+    GetData(JSON_data)
+    async function GetData(url) {
+        const res = await fetch(url)
+        const data = await res.json()
+      
+        //console.log(data)
+        data.forEach(e => {
+
+          if(e.month == MonthEl.innerText){
+            console.log(e.name)
+          }
+          
+        });
+      
+      }
+
+   
+    
 </script>
 
 {% endblock %}

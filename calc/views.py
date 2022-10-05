@@ -197,4 +197,5 @@ def total(request, months):
         'sm_fruits': len(small_fruit),
         'mid_fruits': len(mid_fruit),
         'longstay': len(long_stay),
+        'month': months
     })
