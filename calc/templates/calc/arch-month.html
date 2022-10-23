@@ -43,7 +43,7 @@
 
 
 
-
+<a href="{% url 'calc:total' month %}" id="total">For total</a>
 <table style="width:100%">
     <tr>
       <th>Name</th>
@@ -62,7 +62,7 @@
       <td class="amenities">{{d.fruit_amenity}}, {{ d.drink_amenity}}, {{d.dessert_amenity}}</td>
       <td>{{d.arrival_date}}</td>
     </tr>
-    <a href="{% url 'calc:total' d.month %}">For total</a>
+    
     {% endfor %}
     <tr>
       <td>February</td>
@@ -70,7 +70,11 @@
     </tr>
   </table>
 
+<script>
+  const TotalEl = document.getElementById('total')
 
+  console.log(TotalEl)
+</script>
 
 
 {% endblock %}

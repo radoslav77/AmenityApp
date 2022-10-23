@@ -1,3 +1,4 @@
+from calendar import month
 from django.shortcuts import render
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
@@ -128,7 +129,8 @@ def months(request, months):
         if i.month == months:
             cur_month.append(i)
     return render(request, 'calc/arch-month.html', {
-        'data': cur_month
+        'data': cur_month,
+        'month': months
     })
 
 
