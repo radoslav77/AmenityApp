@@ -2,6 +2,9 @@
 
 {% block style %}
 <style>
+    body{
+        background-color: rgb(240, 231, 221);
+    }
     .item-container{
         display: flex;
         flex-direction: column;
@@ -33,6 +36,22 @@
     }
     p{
         margin: 5px;
+    }
+    h1{
+        margin-left: 15%;
+    }
+    #total_taly{
+        margin-left: 10%;
+        
+
+    }
+    #taly {
+        text-align: center;
+        column-count: 3;
+        column-gap: 40px;
+    }
+    #total_taly p {
+       font-weight: bolder;
     }
 </style>
 {% endblock %}
@@ -212,7 +231,9 @@ let size = size_dict(numCount)
                     }else if (e.drink_amenity == 'Champagne'){
                         drkCh = drkCh + numCount.drk.drknum
                     }else if (e.drink_amenity == 'Red wine'){
+                        
                         drkRW = drkRW + numCount.drk.drknum
+                        
                     }
                 }
 
@@ -228,17 +249,20 @@ let size = size_dict(numCount)
                 const ulEl = document.getElementById('total')
                 console.log(coun)
                 var liEl = document.createElement('li')
-                liEl.innerHTML = `<div> Small Fruit total : ${ coun / size } <br><br>
-                                        Midium Fruit total : ${counM / size  }<br><br>
-                                        Large Fruit total : ${counL / size  }<br><br>
-                                        Chocolaet traffles : ${desC / size  }<br><br>
-                                        Baklava total : ${desB / size  }<br><br>
-                                        Macaroons 4pcs total: ${desM / size  }<br><br>
-                                        Water total: ${drkWater / size  }<br><br>
-                                        Negroni total: ${drkN / size  }<br><br>
-                                        White Wine total: ${drkWW / size  }<br><br>
-                                        Champadne total: ${drkWW / size  }<br><br>
-                                        Red Wine total: ${drkWW / size  }<br><br>
+                liEl.innerHTML = `<div id="total_taly">
+                                        <div id="taly">
+                                        <p>Small Fruit total : ${ coun / size }</p>
+                                        Midium Fruit total : ${counM / size  }
+                                        Large Fruit total : ${counL / size  }
+                                        Chocolaet traffles : ${desC / size  }
+                                        Baklava total : ${desB / size  }
+                                        Macaroons 4pcs total: ${desM / size  }
+                                        Water total: ${drkWater / size  }
+                                        Negroni total: ${drkN / size  }
+                                        White Wine total: ${drkWW / size  }
+                                        Champadne total: ${drkCh / size  }
+                                        Red Wine total: ${drkRW / size  }
+                                        </div>
                                     </div>`
                 
                                   
