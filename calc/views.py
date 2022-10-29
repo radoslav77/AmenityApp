@@ -125,9 +125,16 @@ def archive(request):
 
 def months(request, months):
     cur_month = []
+   
     for i in DATA:
+        for key in YearMounts:
+            if i.month == YearMounts[key]:
+                print(i)
+        
         if i.month == months:
             cur_month.append(i)
+    
+    print(i.month, '+>', months)       
     return render(request, 'calc/arch-month.html', {
         'data': cur_month,
         'month': months
