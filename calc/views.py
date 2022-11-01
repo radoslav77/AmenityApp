@@ -22,7 +22,7 @@ time = datetime.datetime.now()
 TODAY = time.strftime('%Y'+'-'+'%m'+'-'+'%d')
 DATA = InputAmenity.objects.all()
 YearMounts = {'01': 'January', '02': 'February', '03': 'March', '04': 'April', '05': 'May', '06': 'June',
-              '07': 'July', '08': 'Auguest', '09': 'September', '10': 'Octouber', '11': 'November', '12': 'December'}
+              '07': 'July', '08': 'Auguest', '09': 'September', '10': 'Octomber', '11': 'November', '12': 'December'}
 DATA_LONG_STAY = LongStay.objects.all()
 
 FRUIT = ['Large fruit', 'Midium fruit','Small fruit','Presidential']
@@ -115,7 +115,7 @@ def archive(request):
         # arr = i.arrival_date.strftime('%d'+'/'+'%m'+'/'+'%Y')
         if i.arrival_date < TODAY:
             arch.append(i)
-    print(months)
+    #print(months)
     return render(request, 'calc/archive.html', {
         'data': arch,
         'dates': date,

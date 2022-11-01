@@ -45,7 +45,7 @@
 
 
     
-    <h1>Tomorrow arrivals: {{tomorrow}}</h1>
+    <h1>Tomorrow arrivals: <p id="date">{{tomorrow}}</p></h1>
     
     <div class="item-container">
        
@@ -103,7 +103,7 @@
     }
 */
 
-    let counarr = []
+let counarr = []
 let coun = 0
 let counM = 0
 let counL = 0
@@ -120,7 +120,8 @@ let drkWW = 0
 let drkCh = 0
 let drkRW = 0
     const amenitiesEl = document.getElementsByClassName('amenities')
-    
+    const TomorrowDate = document.getElementById('date')
+
    // need to import jason and compare arrival name with amenities 
    // and input it back to page as combined + total  
    var FruitAmenitie = ['Large fruit','Midium fruit','Small fruit','Presidential'] 
@@ -136,11 +137,11 @@ let drkRW = 0
 
       el.forEach(element => {
         if(FruitAmenitie.includes(element)){
-           console.log(element)
+           //console.log(element)
         }
       })
 
-        console.log(el)
+        //console.log(el)
     })
     
     const JSON_data = ('/json_data')
@@ -171,11 +172,19 @@ let size = size_dict(numCount)
             //var date = new Date().toLocaleDateString()
             //var currentDate = date.getFullYear() + '-' + date.getrMonth() + '-' + date.getDate()
             
-            //console.log(e.date,' ',e.arrival_date)
+            /*
+            //getting date of today and adding one day to it
+            var today = new Date()
+            var tomorrow = new Date()
+            tomorrow.setDate(today.getDate()+1)
+            console.log(tomorrow)*/
 
-            if (e.arrival_date === e.date){
+            //console.log(TomorrowDate.innerText)
+            //console.log(e.date,' ',e.arrival_date)
+            //console.log(e)
+            if (e.arrival_date === TomorrowDate.innerText){
                 //console.log(e.name, '+', e.fruit_amenity, '+', e.arrival_date )
-                //console.log(e)
+                
 
                 numCount.key.type = e.fruit_amenity
                 numCount.key.num= e.num_fruit
@@ -258,11 +267,12 @@ let size = size_dict(numCount)
                                         Chocolaet traffles : ${desC / size  }<br><br>
                                         Baklava total : ${desB / size  }<br><br>
                                         Macaroons 4pcs total: ${desM / size  }<br><br>
+                                        Macaroons 8pcs total: ${desM8 / size  }<br><br>
                                         Water total: ${drkWater / size  }<br><br>
                                         Negroni total: ${drkN / size  }<br><br>
                                         White Wine total: ${drkWW / size  }<br><br>
-                                        Champadne total: ${drkWW / size  }<br><br>
-                                        Red Wine total: ${drkWW / size  }<br><br>
+                                        Champadne total: ${drkCh / size  }<br><br>
+                                        Red Wine total: ${drkRW / size  }<br><br>
                                     </div>`
                 
                                   

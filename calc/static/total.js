@@ -1,104 +1,4 @@
-{% extends "calc/base.html" %}
-
-{% load static %}
-
-
-{% block style %}
-<style>
-    .item-container{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border: 1px solid #000;
-        width: 90%;
-        margin-left: 10%;
-        padding: 10px;
-    }
-    .item{
-        display: flex;
-        flex-direction: row;
-       
-        margin: 5px;
-    }
-    label{
-        margin: 0;
-        text-decoration: underline;
-    }
-    .ROW{
-        margin-left: 5px;
-        margin-right: 5px;
-    }
-    table, th, td {
-    border: 1px solid black;
-    }
-    td{
-        text-align: center;
-    }
-    p{
-        margin: 5px;
-    }
-</style>
-{% endblock %}
-
-{% block body %}
-
-
-<div class="month" >
-  <h2>For Month of <p id="month">{{month}}</p></h2>
-</div>
-
-{% if fruits %}
-<h3>Large fruit bowls: {{fruits}}</h3>
-{% endif %}
-{% if sm_fruits %}
-<h3>Small fruit bowls: {{sm_fruits}}</h3>
-{% endif %}
-{% if mid_fruits %}
-<h3>Midium fruit bowls: {{mid_fruits}}</h3>
-{% endif %}
-
-<div class="total">
-  <ul id="total">
-      <li></li>
-  </ul>
-</div>
-
-
-
-
-
-<table style="width:100%">
-    <tr>
-      <th>Name</th>
-      <th>Membership</th>
-      <th>VIP Level</th>
-      <th>Date of Arrival</th>
-      <th>Amenities</th>
-      <th>Date</th>
-    </tr>
-    {% for d in data %}
-    <tr>
-      <td><p>{{d.name}}</p></td>
-      <td >{{d.membership}}</td>
-      <td>{{d.vip_level}}</td>
-      <td>{{d.date}}</td>
-      <td class="amenities">{{d.fruit_amenity}}, {{ d.drink_amenity}}, {{d.dessert_amenity}}</td>
-      <td>{{d.arrival_date}}</td>
-    </tr>
-    {% endfor %}
-    <tr>
-      <td>February</td>
-      <td style="text-align:right">$80</td>
-    </tr>
-  </table>
-
-
-  
-
-
-
-<script>
-  let counarr = []
+//let counarr = []
 let coun = 0
 let counM = 0
 let counL = 0
@@ -118,7 +18,7 @@ let drkRW = 0
     const que = new URLSearchParams(queryString)
     const q = parseInt(que.get('q'))
    const MonthEl = document.getElementById('month')
-   //console.log(MonthEl.innerText)
+   console.log(MonthEl.innerText)
 
    const JSON_data = ('/json_data')
     GetData(JSON_data)
@@ -223,7 +123,7 @@ let size = size_dict(numCount)
             }
             
         });
-        // NEED TO ADD THE REST OF THE AMENITIES !!!
+
             let newS = coun / coun.length 
 
                 const ulEl = document.getElementById('total')
@@ -261,6 +161,3 @@ let size = size_dict(numCount)
             LiElments[i].style.display = 'none'
         }
     }
-</script>
-
-{% endblock %}

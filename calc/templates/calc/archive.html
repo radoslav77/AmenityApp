@@ -20,12 +20,19 @@
         padding: 7px 15px;
         transition: all 0.3s ease-in-out;
     }
+    .months_title{
+        margin-left: 45%;
+        font-weight: bolder;
+       
+    }
 </style>
 {% endblock %}
 {% block body %}
 
+<div class="months_title"> 
+    <h1>Month</h1>
+</div>
 
-<h3>month</h3>
 
 
 <ul id="mount">
@@ -38,7 +45,7 @@
 <li><a href="{% url 'calc:months' 'July' %}">July</a></li>
 <li><a href="{% url 'calc:months' 'August' %}">August</a></li>
 <li><a href="{% url 'calc:months' 'September' %}">September</a></li>
-<li><a href="{% url 'calc:months'  'October' %}">October</a></li>
+<li><a href="{% url 'calc:months'  'Octomber' %}">Octomber</a></li>
 <li><a href="{% url 'calc:months'  'November' %}">November</a></li>
 <li><a href="{% url 'calc:months' 'December' %}">December</a></li>
 
