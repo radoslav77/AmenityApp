@@ -60,6 +60,7 @@ MONTHS = {
     ('August', 'August'),
     ('September', 'September'),
     ('Octomber', 'Octomber'),
+    ('November', 'November'),
     ('December', 'December')
 }
 

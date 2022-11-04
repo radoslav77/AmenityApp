@@ -208,3 +208,14 @@ def total(request, months):
         'longstay': len(long_stay),
         'month': months
     })
+#need more work 
+def uptodate(request, months):
+    for d in DATA:
+        t = datetime.datetime.now() + timedelta(days=1)
+        x = t.strftime('%Y'+'-'+'%m'+'-'+'%d')
+        #print(t, '-', x)
+        if d.arrival_date == x:
+            if d.month == months:
+                print(d.arrival_date)
+    
+    return render(request, 'calc/total.html')

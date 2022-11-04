@@ -14,6 +14,7 @@ urlpatterns = [
     path('arch-month/<str:month>', views.arch_month, name='arch_month'),
     path('months/<str:months>', views.months, name='months'),
     path('total/<str:months>', views.total, name='total'),
+    path('uptodate/<str:months>', views.uptodate, name='uptodate'),
 
     # API
     path('json_data', views.json_data, name='json_data')
