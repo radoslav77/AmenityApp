@@ -210,6 +210,7 @@ def total(request, months):
     })
 #need more work 
 def uptodate(request, months):
+    uptodate_data = []
     for d in DATA:
         t = datetime.datetime.now() + timedelta(days=1)
         x = t.strftime('%Y'+'-'+'%m'+'-'+'%d')
@@ -217,5 +218,10 @@ def uptodate(request, months):
         if d.arrival_date == x:
             if d.month == months:
                 print(d.arrival_date)
-    
-    return render(request, 'calc/total.html')
+        elif d.arrival_date != x:
+            if d.month == months:
+                uptodate_data.append(d)
+    return render(request, 'calc/total.html',
+    {
+        'uptodate': uptodate_data
+    })

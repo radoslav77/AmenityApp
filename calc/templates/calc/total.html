@@ -92,6 +92,14 @@
     </tr>
   </table>
 
+  {% if uptodate %}
+  {% for data in uptodate %}
+       <br>
+        {{data.name}}<br>
+        {{data.dessert_amenity}}<br>
+        {{data.membership}}<br>
+  {% endfor %}
+  {% endif %}
 
   
 
