@@ -62,6 +62,9 @@
         display: none;
         font-size: xx-small;
     }
+    #id_num_of_fruits{
+        margin-top: 20%;
+    }
 
 </style>
 
@@ -92,7 +95,8 @@
     const choiceEls = document.getElementsByTagName("select")
     const pEls = document.getElementsByTagName('p')
     const MonthEl = document.getElementById('id_month')
-
+    const FormEl = document.getElementsByTagName('form')
+    console.log(FormEl)
 
     
     const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -155,9 +159,13 @@ console.log(pEls)
     
    }
 //console.log(div)
- 
-MonthEl.innerText = currant_m
-    
+
+
+
+
+
+MonthEl.value = currant_m
+//MonthEl.disabled = true     
 
 </script>
 
