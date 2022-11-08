@@ -96,9 +96,9 @@
   {% for data in uptodate %}
        <br>
         {{data.name}}<br>
-        {{data.dessert_amenity}}<br>
+        {{data.dessert_amenity}}: {{data.num_of_dessert}}<br>
         {{data.membership}}<br>
-        {{data.drink_amenity}}<br>
+        {{data.drink_amenity}}:{{data.num_of_drink}}<br>
         {{data.month}}<br>
   {% endfor %}
   {% endif %}

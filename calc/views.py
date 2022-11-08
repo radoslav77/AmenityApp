@@ -167,6 +167,21 @@ def tomorrow(request):
         'tomorrow': x
     })
 
+def dayaftertomorrow(request):
+    t = datetime.datetime.now() + timedelta(days=2)
+    x = t.strftime('%Y'+'-'+'%m'+'-'+'%d')
+    # print(datetime.datetime.now() + timedelta(days=1)) in timedelta increase arrgument to add day to realtime
+    tom = []
+    for i in DATA:
+
+        if i.arrival_date == x:
+            tom.append(i)
+    print(tom)
+    return render(request, 'calc/tomorrow.html', {
+        'data': tom,
+        'tomorrow': x
+    })
+
 
 def total(request, months):
     lrg_fruit = []
@@ -221,6 +236,7 @@ def uptodate(request, months):
         elif d.arrival_date != x:
             if d.month == months:
                 uptodate_data.append(d)
+    print(uptodate_data)
     return render(request, 'calc/total.html',
     {
         'uptodate': uptodate_data
