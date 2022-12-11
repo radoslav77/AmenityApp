@@ -241,3 +241,9 @@ def uptodate(request, months):
     {
         'uptodate': uptodate_data
     })
+
+    def user(request):
+        pass
+
+    def login(request):
+        pass 
