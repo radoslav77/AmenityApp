@@ -90,6 +90,19 @@
     p{
         margin: 5px;
     }
+    #total_taly{
+        margin-left: 10%;
+        
+
+    }
+    #taly {
+        text-align: center;
+        column-count: 3;
+        column-gap: 40px;
+    }
+    #total_taly p {
+       font-weight: bolder;
+    }
 </style>
 {% endblock %}
 
@@ -314,18 +327,20 @@ let size = size_dict(numCount)
                 const ulEl = document.getElementById('total')
                 console.log(coun)
                 var liEl = document.createElement('li')
-                liEl.innerHTML = `<div> Small Fruit total : ${ coun / size } <br><br>
-                                        Midium Fruit total : ${counM / size  }<br><br>
-                                        Large Fruit total : ${counL / size  }<br><br>
-                                        Chocolaet traffles : ${desC / size  }<br><br>
-                                        Baklava total : ${desB / size  }<br><br>
-                                        Macaroons 4pcs total: ${desM / size  }<br><br>
-                                        Macaroons 8pcs total: ${desM8 / size  }<br><br>
-                                        Water total: ${drkWater / size  }<br><br>
-                                        Negroni total: ${drkN / size  }<br><br>
-                                        White Wine total: ${drkWW / size  }<br><br>
-                                        Champadne total: ${drkCh / size  }<br><br>
-                                        Red Wine total: ${drkRW / size  }<br><br>
+                liEl.innerHTML = `<div id="total_taly">
+                                        <div id="taly">
+                                        <p>Small Fruit total : ${ coun / size }</p>
+                                        <p>Midium Fruit total : ${counM / size  }</p>
+                                        <p>Large Fruit total : ${counL / size  }</p>
+                                        <p>Chocolaet traffles : ${desC / size  }</p>
+                                        <p>Baklava total : ${desB / size  }</p>
+                                        <p>Macaroons 4pcs total: ${desM / size  }</p>
+                                        <p>Water total: ${drkWater / size  }</p>
+                                        <p>Negroni total: ${drkN / size  }</p>
+                                        <p>White Wine total: ${drkWW / size  }</p>
+                                        <p>Champadne total: ${drkCh / size  }</p>
+                                        <p>Red Wine total: ${drkRW / size  }</p>
+                                        </div>
                                     </div>`
                 
                                   

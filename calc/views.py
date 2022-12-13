@@ -192,6 +192,7 @@ def total(request, months):
     fruit = []
     drink = []
     pastry = []
+    data = InputAmenity.objects.filter(month=months)
 
     for i in DATA:
         if i.month == months:
@@ -221,7 +222,8 @@ def total(request, months):
         'sm_fruits': len(small_fruit),
         'mid_fruits': len(mid_fruit),
         'longstay': len(long_stay),
-        'month': months
+        'month': months,
+        'data': data
     })
 #need more work 
 def uptodate(request, months):
@@ -239,7 +241,8 @@ def uptodate(request, months):
     print(uptodate_data)
     return render(request, 'calc/total.html',
     {
-        'uptodate': uptodate_data
+        'uptodate': uptodate_data,
+        'month': months
     })
 
     def user(request):

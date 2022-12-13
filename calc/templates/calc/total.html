@@ -90,6 +90,19 @@
     p{
         margin: 5px;
     }
+    #total_taly{
+        margin-left: 10%;
+        
+
+    }
+    #taly {
+        text-align: center;
+        column-count: 3;
+        column-gap: 40px;
+    }
+    #total_taly p {
+       font-weight: bolder;
+    }
 </style>
 {% endblock %}
 
@@ -100,21 +113,8 @@
   <h2>For Month of <p id="month">{{month}}</p></h2>
 </div>
 
-{% if fruits %}
-<h3>Large fruit bowls: {{fruits}}</h3>
-{% endif %}
-{% if sm_fruits %}
-<h3>Small fruit bowls: {{sm_fruits}}</h3>
-{% endif %}
-{% if mid_fruits %}
-<h3>Midium fruit bowls: {{mid_fruits}}</h3>
-{% endif %}
 
-<div class="total">
-  <ul id="total">
-      <li></li>
-  </ul>
-</div>
+
 
 
 
@@ -140,21 +140,26 @@
     </tr>
     {% endfor %}
     <tr>
+        {% if uptodate %}
+        {% for data in uptodate %}
+        <tr>
+          <td><p>{{data.name}}</p></td>
+          <td >{{data.membership}}</td>
+          <td>{{data.vip_level}}</td>
+          <td>{{data.date}}</td>
+          <td class="amenities">{{data.fruit_amenity}}, {{ data.drink_amenity}}, {{d.dessert_amenity}}</td>
+          <td>{{data.arrival_date}}</td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+        <tr>
       <td>February</td>
       <td style="text-align:right">$80</td>
     </tr>
   </table>
 
-  {% if uptodate %}
-  {% for data in uptodate %}
-       <br>
-        {{data.name}}<br>
-        {{data.dessert_amenity}}: {{data.num_of_dessert}}<br>
-        {{data.membership}}<br>
-        {{data.drink_amenity}}:{{data.num_of_drink}}<br>
-        {{data.month}}<br>
-  {% endfor %}
-  {% endif %}
+  
+
   <div class="total">
     <ul id="total">
         <li></li>
@@ -296,18 +301,20 @@ let size = size_dict(numCount)
                 const ulEl = document.getElementById('total')
                 console.log(ulEl)
                 var liEl = document.createElement('li')
-                liEl.innerHTML = `<div> Small Fruit total : ${ coun / size } <br><br>
-                                        Midium Fruit total : ${counM / size  }<br><br>
-                                        Large Fruit total : ${counL / size  }<br><br>
-                                        Chocolaet traffles : ${desC / size  }<br><br>
-                                        Baklava total : ${desB / size  }<br><br>
-                                        Macaroons 4pcs total: ${desM / size  }<br><br>
-                                        Macaroons 8pcs total: ${desM8 / size  }<br><br>
-                                        Water total: ${drkWater / size  }<br><br>
-                                        Negroni total: ${drkN / size  }<br><br>
-                                        White Wine total: ${drkWW / size  }<br><br>
-                                        Champadne total: ${drkWW / size  }<br><br>
-                                        Red Wine total: ${drkWW / size  }<br><br>
+                liEl.innerHTML = `<div id="total_taly">
+                                        <div id="taly">
+                                        <p>Small Fruit total : ${ coun / size }</p>
+                                        <p>Midium Fruit total : ${counM / size  }</p>
+                                        <p>Large Fruit total : ${counL / size  }</p>
+                                        <p>Chocolaet traffles : ${desC / size  }</p>
+                                        <p>Baklava total : ${desB / size  }</p>
+                                        <p>Macaroons 4pcs total: ${desM / size  }</p>
+                                        <p>Water total: ${drkWater / size  }</p>
+                                        <p>Negroni total: ${drkN / size  }</p>
+                                        <p>White Wine total: ${drkWW / size  }</p>
+                                        <p>Champadne total: ${drkCh / size  }</p>
+                                        <p>Red Wine total: ${drkRW / size  }</p>
+                                        </div>
                                     </div>`
                 
                                   

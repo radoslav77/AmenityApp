@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
     <link rel="stylesheet" href="/static/style.css">
     <title>Document</title>
     <style>
@@ -27,9 +28,9 @@
                 <li><a href="{% url 'calc:archive' %}">Archive</a></li>
                 <li><a href="{% url 'calc:tomorrow' %}">Tomorrow Arivals</a></li>
                 <li><a href="{% url 'calc:dayaftertomorrow' %}">second day</a></li>
-                <li><a href="">Register</a></li>
-                <li><a href="">Login</a></li>
-                <li><a href="">Logout</a></li>
+                <li><a href="{% url 'useraccounts:register' %}">Register</a></li>
+                <li><a href="{% url 'useraccounts:login_user' %}">Login</a></li>
+                <li><a href="{% url 'useraccounts:logout_user' %}">Logout</a></li>
                 ;<i><a href="">Code</a></i>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
