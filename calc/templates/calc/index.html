@@ -71,7 +71,7 @@
 {% endblock%}
 
 {% block body %}
-{{name}}
+<h1>Hello:  {{user}}</h1>
 <div class="form-container" >
     <div class="form">
         <form action="{% url 'calc:update' %}" method="post" enctype="multipart/form-data" id="form">

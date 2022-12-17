@@ -14,6 +14,7 @@ import json
 import datetime
 from datetime import timedelta
 
+
 from .forms import *
 
 
@@ -35,9 +36,11 @@ DESSERT = ['Chocolate truffle', 'Macaroons 4pcs', 'Macaroons 8pcs', 'Baklava', '
 
 
 def index(request):
-
+    user = request.user.username
+    #print(user) 
     return render(request, 'calc/index.html', {
-        'form': InputData()
+        'form': InputData(),
+        'user':user
     })
 
 
