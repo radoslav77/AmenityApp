@@ -248,8 +248,10 @@ def uptodate(request, months):
         'month': months
     })
 
-    def user(request):
-        pass
-
-    def login(request):
-        pass 
+def longstay(request):
+    long_stay_data =  LongStay.objects.all()
+    print(long_stay_data)
+    for data in long_stay_data:
+        if data.date == TODAY:
+            print(data)
+    return redirect('calc:index')

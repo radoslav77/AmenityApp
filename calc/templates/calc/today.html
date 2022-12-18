@@ -53,6 +53,12 @@
     #total_taly p {
        font-weight: bolder;
     }
+    .card_longsaty{
+        text-align: center;
+    }
+    .card_longsaty a {
+        margin: 2%;
+    }
 </style>
 {% endblock %}
 
@@ -96,6 +102,13 @@
     <ul id="total">
         <li></li>
     </ul>
+</div>
+
+<div class="longstay">
+    <div class="card_longsaty">
+        <a href="{% url 'calc:longstay' %}">Long stay for Today {{today}}</a>
+        <a href="">Upcoming Long Stay </a>
+    </div>
 </div>
 <script>
 let counarr = []

@@ -16,6 +16,7 @@ urlpatterns = [
     path('total/<str:months>', views.total, name='total'),
     path('uptodate/<str:months>', views.uptodate, name='uptodate'),
     path('dayaftertomorrow', views.dayaftertomorrow, name='dayaftertomorrow'),
+    path('longstay', views.longstay, name='longstay'),
 
     # API
     path('json_data', views.json_data, name='json_data')

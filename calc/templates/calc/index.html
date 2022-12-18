@@ -71,7 +71,9 @@
 {% endblock%}
 
 {% block body %}
-<h1>Hello:  {{user}}</h1>
+{% if user %}
+    <h1>Hello:  {{user}}</h1>
+{% endif %}
 <div class="form-container" >
     <div class="form">
         <form action="{% url 'calc:update' %}" method="post" enctype="multipart/form-data" id="form">
@@ -82,8 +84,8 @@
     </div>
 
 </div>
-<button id="btn1">BUTTON</button>
-<output id="output"></output>
+<!--<button id="btn1">BUTTON</button>
+<output id="output"></output>-->
 
 
 <script>

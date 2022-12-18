@@ -1,5 +1,15 @@
 {% extends 'calc/base.html' %}
 {% load crispy_forms_tags %}
+
+{% block style %}
+<style>
+	.container{
+		margin-left: 1%;
+	}
+</style>
+
+{% endblock %}
+
 {% block body %}
 
  <div class="container">
@@ -8,7 +18,7 @@
 			<h3 class="text-center" >Register Account!</h3>
 			<form action="" method="POST">
 			{% csrf_token %}
-			{{ form.as_p}}
+			{{ form|crispy}}
 			<input type="submit" value="Register" class="btn btn-danger">
 			</form>
 		</div>
