@@ -249,9 +249,28 @@ def uptodate(request, months):
     })
 
 def longstay(request):
+
+    long_stay = []
+    t = datetime.datetime.now() + timedelta(days=4)
+    x = t.strftime('%Y'+'-'+'%m'+'-'+'%d')
+    for d in DATA:
+        if d.checkout_date > x:
+            #print(d.name)
+            data = LongStay(title=d,drink_amenity=d.drink_amenity,amenity= d.dessert_amenity,month=d.month, date=d.date )
+            data.save()
+
     long_stay_data =  LongStay.objects.all()
-    print(long_stay_data)
+    #print(long_stay_data)
+
+    # it returnst toomany dublicates need to work on it.
     for data in long_stay_data:
-        if data.date == TODAY:
-            print(data)
+        if data.title.checkout_date > x:
+            long_stay.append(data)
+            #print(data.title.checkout_date)
+        #print(data.date, '-' , TODAY)
+
+    print(long_stay)
     return redirect('calc:index')
+
+
+

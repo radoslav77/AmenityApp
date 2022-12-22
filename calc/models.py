@@ -71,6 +71,7 @@ class InputAmenity(models.Model):
     name = models.CharField(max_length=300)
     membership = models.CharField(max_length=400)
     arrival_date = models.CharField(max_length=100)
+    checkout_date = models.CharField(max_length=100, default='18/12/2022')
     returns = models.IntegerField(default=0)
     vip_level = models.IntegerField(default=0)
     guests_count = models.IntegerField(default=1)

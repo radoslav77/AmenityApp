@@ -28,4 +28,5 @@ class InputData(forms.ModelForm):
         # change input to date input
         widgets = {
             'arrival_date': DateInput(),
+            'checkout_date' : DateInput()
         }
