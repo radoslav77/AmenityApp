@@ -263,13 +263,19 @@ def longstay(request):
     #print(long_stay_data)
 
     # it returnst toomany dublicates need to work on it.
-    for data in long_stay_data:
-        if data.title.checkout_date > x:
-            long_stay.append(data)
+    for d in long_stay_data:
+       
+        if d.title.checkout_date > x:
+            
+            if d not in long_stay:
+                #print(d.title.checkout_date,'-', x)
+                long_stay.append(d)
             #print(data.title.checkout_date)
         #print(data.date, '-' , TODAY)
 
-    print(long_stay)
+    long_stay_list = list(dict.fromkeys(long_stay))
+
+    print(long_stay_list)
     return redirect('calc:index')
 
 
