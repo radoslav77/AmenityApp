@@ -247,7 +247,8 @@ def uptodate(request, months):
         'uptodate': uptodate_data,
         'month': months
     })
-
+# this function is not fully finished 
+# need to link to html teplate 
 def longstay(request):
 
     long_stay = []
@@ -262,7 +263,7 @@ def longstay(request):
     long_stay_data =  LongStay.objects.all()
     #print(long_stay_data)
 
-    # it returnst toomany dublicates need to work on it.
+   
     for d in long_stay_data:
        
         if d.title.checkout_date > x:

@@ -31,12 +31,18 @@
                 <li><a href="{% url 'calc:daily' %}" class="current">Daily</a></li>
                 <li><a href="{% url 'calc:archive' %}">Archive</a></li>
                 <li><a href="{% url 'calc:tomorrow' %}">Tomorrow Arivals</a></li>
-                <li><a href="{% url 'calc:dayaftertomorrow' %}">second day</a></li>
-                <li><a href="{% url 'useraccounts:register' %}">Register</a></li>
-                <li><a href="{% url 'useraccounts:login_user' %}">Login</a></li>
+                <li><a href="{% url 'calc:dayaftertomorrow' %}">Next day</a></li>
+                
+               
+               
                 <li><a href="{% url 'useraccounts:logout_user' %}">Logout</a></li>
-                ;<i><a href="">Code</a></i>
-                <li><a href="contact.html">Contact</a></li>
+                
+                <li><a href="{% url 'useraccounts:register' %}">Register</a></li>
+                <li><a href="{% url 'useraccounts:login_user' %}">Login</a></li>              
+                
+                
+                <!--<li><a href="">Code</a></li>
+                <li><a href="contact.html">Contact</a></li>-->
             </ul>
         </div>
     </nav>
@@ -46,8 +52,8 @@
     </div>
 
 </body>
-<script src="static/script.js"></script>
-<script src="static/details.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/details.js' %}"></script>
 {% block static %}
 {% endblock %}
 

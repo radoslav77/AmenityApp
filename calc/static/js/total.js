@@ -1,4 +1,4 @@
-//let counarr = []
+let counarr = []
 let coun = 0
 let counM = 0
 let counL = 0
@@ -18,7 +18,7 @@ let drkRW = 0
     const que = new URLSearchParams(queryString)
     const q = parseInt(que.get('q'))
    const MonthEl = document.getElementById('month')
-   console.log(MonthEl.innerText)
+   //console.log(MonthEl.innerText)
 
    const JSON_data = ('/json_data')
     GetData(JSON_data)
@@ -123,24 +123,26 @@ let size = size_dict(numCount)
             }
             
         });
-
+        // NEED TO ADD THE REST OF THE AMENITIES !!!
             let newS = coun / coun.length 
 
                 const ulEl = document.getElementById('total')
                 console.log(ulEl)
                 var liEl = document.createElement('li')
-                liEl.innerHTML = `<div> Small Fruit total : ${ coun / size } <br><br>
-                                        Midium Fruit total : ${counM / size  }<br><br>
-                                        Large Fruit total : ${counL / size  }<br><br>
-                                        Chocolaet traffles : ${desC / size  }<br><br>
-                                        Baklava total : ${desB / size  }<br><br>
-                                        Macaroons 4pcs total: ${desM / size  }<br><br>
-                                        Macaroons 8pcs total: ${desM8 / size  }<br><br>
-                                        Water total: ${drkWater / size  }<br><br>
-                                        Negroni total: ${drkN / size  }<br><br>
-                                        White Wine total: ${drkWW / size  }<br><br>
-                                        Champadne total: ${drkWW / size  }<br><br>
-                                        Red Wine total: ${drkWW / size  }<br><br>
+                liEl.innerHTML = `<div id="total_taly">
+                                        <div id="taly">
+                                        <p>Small Fruit total : ${ coun / size }</p>
+                                        <p>Midium Fruit total : ${counM / size  }</p>
+                                        <p>Large Fruit total : ${counL / size  }</p>
+                                        <p>Chocolaet traffles : ${desC / size  }</p>
+                                        <p>Baklava total : ${desB / size  }</p>
+                                        <p>Macaroons 4pcs total: ${desM / size  }</p>
+                                        <p>Water total: ${drkWater / size  }</p>
+                                        <p>Negroni total: ${drkN / size  }</p>
+                                        <p>White Wine total: ${drkWW / size  }</p>
+                                        <p>Champadne total: ${drkCh / size  }</p>
+                                        <p>Red Wine total: ${drkRW / size  }</p>
+                                        </div>
                                     </div>`
                 
                                   
